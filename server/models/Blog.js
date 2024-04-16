@@ -1,5 +1,6 @@
 // model for the song blog
 const mongoose = require('mongoose');
+const _ = require('underscore');
 
 
 let blogModel = {};
@@ -24,6 +25,7 @@ const blogSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
+        max: 5,
         required: true,
     },
     
@@ -38,6 +40,22 @@ const blogSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+
+    owner: {
+        type: mongoose.Schema.ObjectId,
+        required: true,
+        ref: 'Account',
+    },
+});
+
+// converts a doc to something we can store in redis later on
+blogSchema.statics.toAPI = (doc) => ({
+    title: doc.title,
+    artist: doc.artist,
+    genre: doc.genre,
+    rating: doc.rating,
+    description: doc.description,
+    createdAt: doc.createdAt,
 });
 
 blogModel = mongoose.model('Blog', blogSchema);
