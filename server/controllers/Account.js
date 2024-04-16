@@ -4,6 +4,7 @@ const models = require('../models');
 const { Account } = models;
 
 const loginPage = (req, res) => res.render('login');
+const profilePage = (req, res) => res.render('profile');
 
 // logout function
 const logout = (req, res) => {
@@ -29,18 +30,19 @@ const login = (req, res) => {
     // set the user's session
     req.session.account = Account.toAPI(account);
 
-    return res.json({ redirect: '/maker' });
+    return res.json({ redirect: '/profile' });
   });
 };
 
 // signup function
 const signup = async (req, res) => {
+  const firstname = `${req.body.firstname}`;
   const username = `${req.body.username}`;
   const password = `${req.body.pass}`;
   const password2 = `${req.body.pass2}`;
 
   // check if all fields are filled out
-  if (!username || !password || !password2) {
+  if (!firstname || !username || !password || !password2) {
     return res.status(400).json({ error: 'All fields are required!' });
   }
 
@@ -54,10 +56,10 @@ const signup = async (req, res) => {
     const hash = await Account.generateHash(password);
 
     // create a new account
-    const newAccount = new Account({ username, password: hash });
+    const newAccount = new Account({ firstname, username, password: hash });
     await newAccount.save(); // save the account
     req.session.account = Account.toAPI(newAccount); // set the user's session
-    return res.json({ redirect: '/maker' });
+    return res.json({ redirect: '/profile' });
   } catch (err) {
     // in case of the username already existing
     if (err.code === 11000) {
@@ -68,10 +70,13 @@ const signup = async (req, res) => {
   }
 };
 
+// profile function
+
 // exports
 module.exports = {
   loginPage,
   logout,
   login,
   signup,
+  profilePage,
 };
