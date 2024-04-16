@@ -4,8 +4,6 @@ const React = require('react');
 const { createRoot } = require('react-dom/client');
 const { useState, useEffect } = React;
 
-// get blogs
-
 
 // show the users profile
 const App = () => {
@@ -27,3 +25,11 @@ const App = () => {
         </div>
     )
 };
+
+// init
+const init = () => {
+    root = createRoot(document.getElementById('app'));
+    root.render(<App />);
+};
+
+window.onload = init;
