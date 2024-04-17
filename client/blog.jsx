@@ -124,6 +124,14 @@ const App = () => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render(<App />);
+
+    // route the buttons
+    const blogButton = document.querySelector('#blogButton');
+    blogButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        root.render(<BlogForm />);
+        return false;
+    });
 };
 
 window.onload = init;
