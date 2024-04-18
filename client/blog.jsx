@@ -14,7 +14,7 @@ const handleBlog = (e, onBlogAdded) => {
     const artist = e.target.querySelector('#artist').value;
     const genre = e.target.querySelector('#genre').value;
     const rating = e.target.querySelector('#rating').value;
-    const description = e.target.querySelector('#description').value;
+    const description = e.target.querySelector('#description').value; // descriptiosn are not required
 
     // make sure the fields aren't empty
     if (!title || !artist || !genre || !rating) {
@@ -38,13 +38,15 @@ const handleBlog = (e, onBlogAdded) => {
     helper.sendPost(e.target.action, { title, artist, genre, rating, description }, onBlogAdded);
     return false;
 };
+
+
 // blog form
 const BlogForm = (props) => {
     return (
         <form id="blogForm"
             name="blogForm"
             onSubmit={(e) => handleBlog(e, props.onBlogAdded)}
-            action="/makeBlog"
+            action="/blog"
             method='POST'
             className='blogForm'
         >
@@ -66,16 +68,16 @@ const BlogForm = (props) => {
 
 // blog list
 const BlogList = (props) => {
-    const [blogs, setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState(props.blogs);
 
     useEffect(() => {
-        const loadBlogs = async () => {
+        const loadBlogsfromServer = async () => {
             const res = await fetch('/getBlogs', { method: 'GET' });
             const data = await res.json();
             setBlogs(data.blogs);
         };
-        loadBlogs();
-    }, []);
+        loadBlogsfromServer();
+    }, [props.refreshBlogs]);
 
     // if the list is empty
     if (blogs.length === 0) {
@@ -94,6 +96,9 @@ const BlogList = (props) => {
                 <h3 className='blogArtist'>Artist: {blog.artist}</h3>
                 <h3 className='blogGenre'>Genre: {blog.genre}</h3>
                 <h3 className='blogRating'>Rating: {blog.rating}</h3>
+
+                {/* if there is a description */}
+                <p className='blogDescription'>Takeaways: {blog.description}</p>
             </div>
         );
     });
