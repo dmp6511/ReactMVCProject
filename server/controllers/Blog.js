@@ -5,7 +5,7 @@ const { Blog } = models;
 
 // render the blog page
 const blogPage = async (req, res) => {
-  return res.render('blog');
+  return res.render('app');
 };
 
 // create a blog
