@@ -116,9 +116,11 @@ const App = () => {
     return (
         <div>
             <h1>Here are you most recent blogs</h1>
-            <BlogForm triggerReload={() => setRefreshBlogs(!refreshBlogs)} />
-
-            <div>
+            <div id='createBlog'>
+                <BlogForm triggerReload={() => setRefreshBlogs(!refreshBlogs)} />
+            </div>
+            
+            <div id='blogs'>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
             </div>
         </div>
