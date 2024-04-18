@@ -6,14 +6,16 @@ const { useState, useEffect } = React;
 
 
 // show the users profile
-const App = () => {
+const App = (props) => {
+
+    // get the username from the server
+    const [username, setUsername] = React.useState(props.username);
+
+
     return (
         <div>
-            <h1>Hello!</h1>
+            <h1>Hello! {username}</h1>
             <h2>Welcome to your profile page!</h2>
-
-            {/* show users first name and user */}
-            <h3>username</h3>
 
             <br />
             <h3>favorites:</h3>

@@ -43,26 +43,29 @@ const handleBlog = (e, onBlogAdded) => {
 // blog form
 const BlogForm = (props) => {
     return (
-        <form id="blogForm"
-            name="blogForm"
-            onSubmit={(e) => handleBlog(e, props.onBlogAdded)}
-            action="/blog"
-            method='POST'
-            className='blogForm'
-        >
-            <label htmlFor="title">Title: </label>
-            <input id="title" type="text" name="title" placeholder="Blog Title" />
-            <label htmlFor="artist">Artist: </label>
-            <input id="artist" type="text" name="artist" placeholder="Artist" />
-            <label htmlFor="genre">Genre: </label>
-            <input id="genre" type="text" name="genre" placeholder="Genre" />
-            <label htmlFor="rating">Rating: </label>
-            <input type="number" name="rating" id="rating" max={5} />
-            <label htmlFor="description">Description: </label>
-            <input id="description" type="text" name="description" placeholder="Description" />
-            <input className='makeBlogSubmit' type='submit' value='Make Blog' />
+        <div>
+            <h2>Make a blog </h2>
+            <form id="blogForm"
+                name="blogForm"
+                onSubmit={(e) => handleBlog(e, props.refreshBlogs)}
+                action="/blog"
+                method='POST'
+                className='blogForm'
+            >
+                <label htmlFor="title">Title: </label>
+                <input id="title" type="text" name="title" placeholder="Blog Title" />
+                <label htmlFor="artist">Artist: </label>
+                <input id="artist" type="text" name="artist" placeholder="Artist" />
+                <label htmlFor="genre">Genre: </label>
+                <input id="genre" type="text" name="genre" placeholder="Genre" />
+                <label htmlFor="rating">Rating: </label>
+                <input type="number" name="rating" id="rating" max={5} />
+                <label htmlFor="description">Description: </label>
+                <input id="description" type="text" name="description" placeholder="Description" />
+                <input className='makeBlogSubmit' type='submit' value='Make Blog' />
 
-        </form>
+            </form>
+        </div>
     );
 };
 
@@ -72,10 +75,11 @@ const BlogList = (props) => {
 
     useEffect(() => {
         const loadBlogsfromServer = async () => {
-            const res = await fetch('/getBlogs', { method: 'GET' });
+            const res = await fetch('/getBlogs');
             const data = await res.json();
             setBlogs(data.blogs);
         };
+        
         loadBlogsfromServer();
     }, [props.refreshBlogs]);
 
@@ -119,7 +123,7 @@ const App = () => {
             <div id='createBlog'>
                 <BlogForm triggerReload={() => setRefreshBlogs(!refreshBlogs)} />
             </div>
-            
+
             <div id='blogs'>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
             </div>
@@ -131,14 +135,6 @@ const App = () => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render(<App />);
-
-    // route the buttons
-    const blogButton = document.querySelector('#blogButton');
-    blogButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        root.render(<BlogForm />);
-        return false;
-    });
 };
 
 window.onload = init;
