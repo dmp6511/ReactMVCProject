@@ -4,7 +4,7 @@ const models = require('../models');
 const { Blog } = models;
 
 // render the blog page
-const blogPage = async (req, res) => res.render('app');
+const blogPage = async (req, res) => res.render('blog');
 
 // create a blog
 const createBlog = async (req, res) => {

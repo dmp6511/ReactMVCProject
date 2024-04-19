@@ -14,7 +14,7 @@ const App = (props) => {
 
     return (
         <div>
-            <h1>Hello! {username}</h1>
+            <h1>Hello! </h1>
             <h2>Welcome to your profile page!</h2>
 
             <br />
