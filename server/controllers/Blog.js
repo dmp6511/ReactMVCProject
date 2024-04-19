@@ -31,6 +31,10 @@ const createBlog = async (req, res) => {
   try {
     const newBlog = new Blog(blogData);
     await newBlog.save();
+
+    // log it out
+    console.log(newBlog);
+
     return res.status(201).json({
       title: newBlog.title,
       artist: newBlog.artist,
@@ -39,6 +43,8 @@ const createBlog = async (req, res) => {
       description: newBlog.description,
       createdAt: newBlog.createdAt,
     });
+
+    
   } catch (err) {
     return res.status(500).json({ error: 'An error occurred making your blog' });
   }

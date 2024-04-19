@@ -58,7 +58,6 @@ const LoginWindow = (props) => {
                 action='/login'
                 method='POST'
                 className='mainForm'>
-                <h1>Sign In Here </h1>
 
                 <label htmlFor='username'> <b> Username: </b> </label>
                 <input id='user' type='text' name='username' placeholder='username' />
