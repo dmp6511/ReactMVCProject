@@ -45,7 +45,6 @@ const handleBlog = (e, onBlogAdded) => {
 const BlogForm = (props) => {
     return (
         <div>
-            <h2>Make a blog </h2>
             <form id="blogForm"
                 name="blogForm"
                 onSubmit={(e) => handleBlog(e, props.refreshBlogs)}
@@ -74,13 +73,14 @@ const BlogForm = (props) => {
 const BlogList = (props) => {
     const [blogs, setBlogs] = useState(props.blogs);
 
+    // call in the blogs
     useEffect(() => {
         const loadBlogsfromServer = async () => {
             const res = await fetch('/getBlogs');
             const data = await res.json();
             setBlogs(data.blogs);
         };
-        
+
         loadBlogsfromServer();
     }, [props.refreshBlogs]);
 
@@ -123,15 +123,18 @@ const App = () => {
     return (
 
         <div>
-            <h1>Here will be your most recent blogs and the ones you have yet to create </h1>
+            <h1>Blog Page</h1>
+            <h2> Create your blogs here! </h2>
 
-            {/* <div id='createBlog'>
+
+            <div id='createBlog'>
+                <h3>Make a Blog</h3>
                 <BlogForm triggerReload={() => setRefreshBlogs(!refreshBlogs)} />
             </div>
 
             <div id='blogs'>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
-            </div> */}
+            </div>
         </div>
     );
 };
@@ -142,11 +145,7 @@ const init = () => {
     const createBlogButton = document.getElementById('createBlog');
     const root = createRoot(document.getElementById('app'));
 
-    createBlogButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        root.render(<BlogForm />);
-        return false;
-    });
+    root.render(<App />);
 };
 
 window.onload = init;

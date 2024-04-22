@@ -53,7 +53,7 @@ const getBlogs = async (req, res) => {
   // try catch
   try {
     const query = { owner: req.session.account._id };
-    const docs = await Blog.BlogModel.find(query).select('title artist genre rating description createdAt').lean().exec();
+    const docs = await Blog.find(query).select(' ');
     return res.json({ blogs: docs });
   } catch (err) {
     console.log(err);

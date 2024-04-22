@@ -30,14 +30,14 @@ const App = (props) => {
 
             {/* profit model */}
             <section>
-                <h2>Upgrade?</h2>
+                <h3>Upgrade?</h3>
                 <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
                 <button id='upgradeBtn'>Upgrade Now! </button>
             </section>
 
             <section id='changePassword'>
                 <div>
-                    <h3> <b>Forogt Password? </b> </h3>
+                    <h3> <b>Change Password? </b> </h3>
                     <button id='changePassBtn' name='changePassBtn'>Change Password</button>
                 </div>
             </section>
