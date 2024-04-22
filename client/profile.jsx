@@ -9,7 +9,6 @@ const { useState, useEffect } = React;
 const App = (props) => {
 
     // get the username from the server
-    const [username, setUsername] = React.useState(props.username);
 
 
     return (
@@ -17,12 +16,33 @@ const App = (props) => {
             <h1>Hello! </h1>
             <h2>Welcome to your profile page!</h2>
 
-            <p>Here you will be able to view the songs that you have favorited. </p>
+            <section id='profilePhoto'>
+                <p>Here you can set a profile photo to your liking! </p>
+                <button id='setProfilePhoto' name='setProfilePhoto'>Set Profile Photo</button>
+            </section>
 
-            <ul>
-                <li>song 1 - artist 1 </li>
-                <li>song 2 - artist 2</li>
-            </ul>
+            <section id='favorites'>
+                <div>
+                    <p>Here you will be able to view the songs that you have favorited. </p>
+                </div>
+                <ul>Favorites: </ul>
+            </section>
+
+            {/* profit model */}
+            <section>
+                <h2>Upgrade?</h2>
+                <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
+                <button id='upgradeBtn'>Upgrade Now! </button>
+            </section>
+
+            <section id='changePassword'>
+                <div>
+                    <h3> <b>Forogt Password? </b> </h3>
+                    <button id='changePassBtn' name='changePassBtn'>Change Password</button>
+                </div>
+            </section>
+
+
 
             <br />
         </div>
