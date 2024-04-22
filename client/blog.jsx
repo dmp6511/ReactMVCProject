@@ -4,6 +4,7 @@ const helper = require('./helper.js');
 const React = require('react');
 const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
+const { create } = require('underscore');
 
 // handle blog creation
 const handleBlog = (e, onBlogAdded) => {
@@ -137,8 +138,15 @@ const App = () => {
 
 // init
 const init = () => {
+
+    const createBlogButton = document.getElementById('createBlog');
     const root = createRoot(document.getElementById('app'));
-    root.render(<App />);
+
+    createBlogButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        root.render(<BlogForm />);
+        return false;
+    });
 };
 
 window.onload = init;
