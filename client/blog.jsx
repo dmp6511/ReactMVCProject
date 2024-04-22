@@ -23,7 +23,7 @@ const handleBlog = (e, onBlogAdded) => {
     };
 
     // make sure the rating is a number
-    if (isNaN(rating)) {
+    if (Number.isNaN(rating)) {
         helper.handleError('Rating must be a number!');
         return false;
     };
@@ -114,19 +114,23 @@ const BlogList = (props) => {
     );
 };
 
+
+// view for the blog page
 const App = () => {
     const [refreshBlogs, setRefreshBlogs] = useState(false);
 
     return (
+
         <div>
-            <h1>Here are you most recent blogs</h1>
-            <div id='createBlog'>
+            <h1>Here will be your most recent blogs and the ones you have yet to create </h1>
+
+            {/* <div id='createBlog'>
                 <BlogForm triggerReload={() => setRefreshBlogs(!refreshBlogs)} />
             </div>
 
             <div id='blogs'>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
-            </div>
+            </div> */}
         </div>
     );
 };

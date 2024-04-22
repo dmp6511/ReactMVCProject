@@ -17,13 +17,14 @@ const App = (props) => {
             <h1>Hello! </h1>
             <h2>Welcome to your profile page!</h2>
 
-            <br />
-            <h3>favorites:</h3>
+            <p>Here you will be able to view the songs that you have favorited. </p>
+
             <ul>
-                <li>favorite 1</li>
-                <li>favorite 2</li>
-                <li>favorite 3</li>
+                <li>song 1 - artist 1 </li>
+                <li>song 2 - artist 2</li>
             </ul>
+
+            <br />
         </div>
     )
 };
