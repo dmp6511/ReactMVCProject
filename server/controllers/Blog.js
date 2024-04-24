@@ -42,6 +42,7 @@ const createBlog = async (req, res) => {
       rating: newBlog.rating,
       description: newBlog.description,
       createdAt: newBlog.createdAt,
+      owner: newBlog.owner,
     });
   } catch (err) {
     return res.status(500).json({ error: 'An error occurred making your blog' });

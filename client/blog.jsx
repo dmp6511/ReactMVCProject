@@ -59,7 +59,7 @@ const BlogForm = (props) => {
                 <label htmlFor="genre">Genre: </label>
                 <input id="genre" type="text" name="genre" placeholder="Genre" />
                 <label htmlFor="rating">Rating: </label>
-                <input type="number" name="rating" id="rating" max={5} />
+                <input type="number" name="rating" id="rating" max={5} placeholder='Rate out of 5' />
                 <label htmlFor="description">Description: </label>
                 <input id="description" type="text" name="description" placeholder="Description" />
                 <input className='makeBlogSubmit' type='submit' value='Make Blog' />
@@ -96,14 +96,23 @@ const BlogList = (props) => {
     // if the list is not empty
     const blogNodes = blogs.map((blog) => {
         return (
-            <div key={blog._id} className='blog'>
-                <h3 className='blogTitle'>Title: {blog.title}</h3>
-                <h3 className='blogArtist'>Artist: {blog.artist}</h3>
-                <h3 className='blogGenre'>Genre: {blog.genre}</h3>
-                <h3 className='blogRating'>Rating: {blog.rating}</h3>
 
-                {/* if there is a description */}
-                <p className='blogDescription'>Takeaways: {blog.description}</p>
+            // blog card
+            <div key={blog._id} className='blog'>
+                <section id='blogCard'>
+
+                    {/* show the username and date of the blog */}
+                    <h2 className="blogOwner">{blog.owner}</h2>
+
+
+                    <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>
+                    <h4 className='blogGenre'> Genre: {blog.genre} </h4>
+                    <h4 className='blogRating'> {blog.rating} &#9733; of 5 &#9733; </h4>
+
+                    {/* if there is a description */}
+                    <h4 className="blogTakes"> Takeaways: </h4>
+                    <p className='blogDescription'>{blog.description}</p>
+                </section>
             </div>
         );
     });
@@ -133,6 +142,7 @@ const App = () => {
             </div>
 
             <div id='blogs'>
+                <h3> Recent Blogs </h3>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
             </div>
         </div>

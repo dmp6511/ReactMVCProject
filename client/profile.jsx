@@ -2,18 +2,23 @@
 
 const React = require('react');
 const { createRoot } = require('react-dom/client');
+const { first } = require('underscore');
 const { useState, useEffect } = React;
 
 
 // show the users profile
-const App = (props) => {
+const App = () => {
 
-    // get the username from the server
+    // get the users first name
+    const [firstname, setFirstname] = useState('User');
 
+
+    // get the users favorites
+    const [favorites, setFavorites] = useState([]);
 
     return (
         <div>
-            <h1>Hello! </h1>
+            <h1>Welcome {firstname}!</h1>
             <h2>Welcome to your profile page!</h2>
 
             <section id='profilePhoto'>

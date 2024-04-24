@@ -71,6 +71,11 @@ const signup = async (req, res) => {
 };
 
 // profile function
+const getProfile = (req, res) => {
+  // get the user's profile
+  const account = Account.toAPI(req.session.account);
+  return res.json({ account });
+};
 
 // exports
 module.exports = {
@@ -79,4 +84,5 @@ module.exports = {
   login,
   signup,
   profilePage,
+  getProfile,
 };

@@ -54,6 +54,7 @@ blogSchema.statics.toAPI = (doc) => ({
   rating: doc.rating,
   description: doc.description,
   createdAt: doc.createdAt,
+  owner: doc.owner,
 });
 
 blogModel = mongoose.model('Blog', blogSchema);
