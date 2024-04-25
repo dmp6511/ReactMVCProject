@@ -181,6 +181,7 @@ h3 {
     text-align: center;
     font-size: 40px;
     margin-top: 25px;
+    text-decoration: underline;
 }
 
 
@@ -193,7 +194,16 @@ h3 {
     margin-top: 50px;
     float: right;
     transform: translateY(-290px);
+}
 
+#setProfilePhoto {
+    margin-top: 50px;
+    font-size: large;
+}
+
+#profilePic {
+    border: 2px solid #721172;
+    padding: 3px;
 }
 
 button {
@@ -219,4 +229,16 @@ section {
     border: 2px solid #721172;
     border-radius: 10px;
     background-color: #fbfbff;
+}
+
+#favorites, #profitModel, #changePassword {
+    background-color: #757575;
+    color: white;
+}
+
+#songList{
+    background-color: #fbfbff;
+    color: black;
+    border: 2px solid #721172;
+    padding: 5px;
 }

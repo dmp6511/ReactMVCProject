@@ -22,15 +22,15 @@ const App = () => {
 
             <section id='profilePhoto'>
                 <p>Here you can set a profile photo to your liking! </p>
-                <img src='../../assets/img/default.png' alt='profile photo' />
+                <img src='../../assets/img/default.png' alt='profile photo' id='profilePic' />
                 <button id='setProfilePhoto' name='setProfilePhoto'>Set Profile Photo</button>
             </section>
 
             <section id='favorites'>
                 <h3>Favorite Songs</h3>
-                <p>Here you will be able to view the songs that you have favorited. </p>
-                <div>
-                    <ul>Songs: 
+                <div id='songList'>
+                    <p>Here you will be able to view the songs that you have favorited. </p>
+                    <ul>Songs:
                         <li>song 1</li>
 
                     </ul>
@@ -38,7 +38,7 @@ const App = () => {
             </section>
 
             {/* profit model */}
-            <section>
+            <section id='profitModel'>
                 <h3>Upgrade?</h3>
                 <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
                 <button id='upgradeBtn'>Upgrade Now! </button>
