@@ -8,6 +8,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: #757575;
 }
 
 h1 {
@@ -172,4 +173,50 @@ nav:nth-child(1) {
 
 .hidden {
     display: none;
+}
+
+/* Profile page styles */
+
+h3 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 25px;
+}
+
+
+#profilePhoto {
+    width: 200px;
+    text-align: center;
+    height: 200px;
+    border-radius: 100px;
+    margin: 0 auto;
+    margin-top: 50px;
+    float: right;
+    transform: translateY(-290px);
+
+}
+
+button {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+}
+
+button:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+section {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 2px solid #721172;
+    border-radius: 10px;
+    background-color: #fbfbff;
 }

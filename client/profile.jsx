@@ -2,7 +2,6 @@
 
 const React = require('react');
 const { createRoot } = require('react-dom/client');
-const { first } = require('underscore');
 const { useState, useEffect } = React;
 
 
@@ -23,14 +22,19 @@ const App = () => {
 
             <section id='profilePhoto'>
                 <p>Here you can set a profile photo to your liking! </p>
+                <img src='../../assets/img/default.png' alt='profile photo' />
                 <button id='setProfilePhoto' name='setProfilePhoto'>Set Profile Photo</button>
             </section>
 
             <section id='favorites'>
+                <h3>Favorite Songs</h3>
+                <p>Here you will be able to view the songs that you have favorited. </p>
                 <div>
-                    <p>Here you will be able to view the songs that you have favorited. </p>
+                    <ul>Songs: 
+                        <li>song 1</li>
+
+                    </ul>
                 </div>
-                <ul>Favorites: </ul>
             </section>
 
             {/* profit model */}
