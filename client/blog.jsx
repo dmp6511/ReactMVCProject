@@ -102,7 +102,7 @@ const BlogList = (props) => {
                 <section id='blogCard'>
 
                     {/* show the username and date of the blog */}
-                    <h2 className="blogOwner">{blog.owner}</h2>
+                    <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
 
 
                     <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>
@@ -112,6 +112,9 @@ const BlogList = (props) => {
                     {/* if there is a description */}
                     <h4 className="blogTakes"> Takeaways: </h4>
                     <p className='blogDescription'>{blog.description}</p>
+
+                    {/* created at */}
+                    <h5 className='blogDate'> Created at: {new Date(blog.createdAt).toLocaleString()} </h5>
                 </section>
             </div>
         );
@@ -142,7 +145,7 @@ const App = () => {
             </div>
 
             <div id='blogs'>
-                <h3> Recent Blogs </h3>
+                <h3> Your Most Recent Blogs </h3>
                 <BlogList blogs={[]} refreshBlogs={refreshBlogs} />
             </div>
         </div>
@@ -152,7 +155,6 @@ const App = () => {
 // init
 const init = () => {
 
-    const createBlogButton = document.getElementById('createBlog');
     const root = createRoot(document.getElementById('app'));
 
     root.render(<App />);

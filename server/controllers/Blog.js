@@ -49,7 +49,7 @@ const createBlog = async (req, res) => {
   }
 };
 
-// get all blogs
+//get blogs for the user
 const getBlogs = async (req, res) => {
   // try catch
   try {
@@ -62,9 +62,23 @@ const getBlogs = async (req, res) => {
   }
 };
 
+// get all blogs
+const getAllBlogs = async (req, res) => {
+  // try catch
+  try {
+    const docs = await Blog.find().select(' ');
+    return res.json({ blogs: docs });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
+
 // exports
 module.exports = {
   blogPage,
   createBlog,
   getBlogs,
+  getAllBlogs,
 };
