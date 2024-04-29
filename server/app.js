@@ -13,6 +13,8 @@ const session = require('express-session');
 const RedeisStore = require('connect-redis').default;
 const redis = require('redis');
 
+const fileUpload = require('express-fileupload');
+
 const router = require('./router.js');
 
 // port
@@ -41,6 +43,7 @@ redisClient.connect().then(() => {
   const app = express();
 
   app.use(helmet());
+  app.use(fileUpload());
   app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
   app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
   app.use(compression());

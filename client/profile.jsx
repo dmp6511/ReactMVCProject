@@ -133,16 +133,65 @@ const UpgradeWindow = (props) => {
     )
 };
 
+
+
+// profile photo handle function
+const handleProfilePhoto = (e) => {
+    e.preventDefault();
+    helper.hideError();
+
+    // get the users photo
+    const photo = e.target.querySelector('#profilePic').value;
+
+    // make sure the photo isn't empty
+    if (!photo) {
+        helper.handleError('No photo selected!');
+        return false;
+    };
+
+    // send the photo to the server
+    helper.sendPost(e.target.action, { photo }).then((result) => {
+        if (result.message) {
+            toast(result.message);
+        }
+    });
+    return false;
+};
+
+// profile photo window
+const ProfilePhotoWindow = (props) => {
+    return (
+        <div>
+            <h1>Profile Photo</h1>
+            <h2>Here you can set a profile photo to your liking!</h2>
+
+            <form id='profilePhotoForm'
+                name='profilePhotoForm'
+                onSubmit={handleProfilePhoto}
+                action='/upload'
+                method='POST'
+                className='mainForm'
+            >
+                <label htmlFor='profilePic'>Profile Photo: </label>
+                <input id='profilePic' type='file' name='profilePic' />
+                <input name='profilePicBtn' type="submit" value="Set Profile Photo" />
+            </form>
+        </div>
+    )
+};
+
+
+
 // show the users profile
 const App = (props) => {
-    
+
 
     // get the users first name
     const [firstname, setFirstname] = useState(props.firstname);
 
 
     // get the users favorites
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(['']);
 
     return (
         <div>
@@ -154,7 +203,7 @@ const App = (props) => {
             <section id='profilePhoto'>
                 <p>Here you can set a profile photo to your liking! </p>
                 <img src='../../assets/img/default.png' alt='profile photo' id='profilePic' />
-                <button id='setProfilePhoto' name='setProfilePhoto'>Set Profile Photo</button>
+                <input id='profilePicBtn' name='profilePicBtn' onClick={(e) => { props.render(<ProfilePhotoWindow />) }} type="button" value="Set Profile Photo" />
             </section>
 
 
