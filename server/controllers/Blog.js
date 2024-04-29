@@ -26,6 +26,7 @@ const createBlog = async (req, res) => {
     rating: req.body.rating,
     description: req.body.description,
     owner: req.session.account._id,
+    username: req.session.account.username,
   };
 
   try {
@@ -43,13 +44,14 @@ const createBlog = async (req, res) => {
       description: newBlog.description,
       createdAt: newBlog.createdAt,
       owner: newBlog.owner,
+      username: newBlog.username,
     });
   } catch (err) {
     return res.status(500).json({ error: 'An error occurred making your blog' });
   }
 };
 
-//get blogs for the user
+//get blogs for the user only
 const getBlogs = async (req, res) => {
   // try catch
   try {

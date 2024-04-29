@@ -135,9 +135,10 @@ const UpgradeWindow = (props) => {
 
 // show the users profile
 const App = (props) => {
+    
 
     // get the users first name
-    const [firstname, setFirstname] = useState('User');
+    const [firstname, setFirstname] = useState(props.firstname);
 
 
     // get the users favorites
