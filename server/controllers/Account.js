@@ -110,7 +110,35 @@ const changePass = async (req, res) => {
     return res.json({ redirect: '/profile' });
   });
 
-}
+};
+
+// upgrade function
+const upgrade = async (req, res) => {
+  // get the card information from the user
+  const cardName = `${req.body.cardName}`;
+  const cardNumber = `${req.body.cardNumber}`;
+  const expirationDate = `${req.body.expirationDate}`;
+  const cvv = `${req.body.cvv}`;
+
+  // check if all fields are filled out
+  if (!cardName || !cardNumber || !expirationDate || !cvv) {
+    return res.status(400).json({ error: 'All fields are required!' });
+  }
+
+  // check if the card number is valid
+  if (cardNumber.length !== 16) {
+    return res.status(400).json({ error: 'Invalid card number!' });
+  }
+
+  // check if the cvv is valid
+  if (cvv.length !== 3) {
+    return res.status(400).json({ error: 'Invalid CVV!' });
+  }
+
+  // return a success message
+  alert('Payment successful! You are now a premium user!');
+  return res.json({ redirect: '/profile' });
+};
 
 // exports
 module.exports = {
@@ -121,4 +149,5 @@ module.exports = {
   profilePage,
   getProfile,
   changePass,
+  upgrade,
 };

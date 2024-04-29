@@ -60,6 +60,69 @@ const ChangePassWindow = (props) => {
 };
 
 // upgrade the user to premium
+const handleUpgrade = (e) => {
+    e.preventDefault();
+    e.hideError();
+
+    // get the card information from the user
+    const cardName = e.target.querySelector('#cardName').value;
+    const cardNumber = e.target.querySelector('#cardNumber').value;
+    const cardExp = e.target.querySelector('#cardExp').value;
+    const cardCVV = e.target.querySelector('#cardCVV').value;
+
+    // make sure the fields aren't empty
+    if (!cardName || !cardNumber || !cardExp || !cardCVV) {
+        helper.handleError('All fields are required!');
+        return false;
+    };
+
+    // make sure the card number is valid
+    if (cardNumber.length !== 16) {
+        helper.handleError('Invalid card number!');
+        return false;
+    };
+
+    // make sure the cvv is valid
+    if (cardCVV.length !== 3) {
+        helper.handleError('Invalid CVV!');
+        return false;
+    };
+
+    // send the user to the upgrade page
+    helper.sendPost(e.target.action, { cardName, cardNumber, cardExp, cardCVV });
+    return false;
+};
+
+// upgrade window
+const UpgradeWindow = (props) => {
+    return (
+        <div>
+            <h1>Upgrade to Premium</h1>
+            <h2>Here you can upgrade to the premium version of the application</h2>
+            <h2>Please do <b>NOT</b> provide any actual financial information </h2>
+
+            <form id='upgradeForm'
+                name='upgradeForm'
+                onSubmit={handleUpgrade}
+                action='/upgrade'
+                method='POST'
+                className='mainForm'
+            >
+                {/* accept card information */}
+                <label htmlFor='cardName'>Card Name: </label>
+                <input id='cardName' type='text' name='cardName' placeholder='Cardholder Name' />
+                <label htmlFor='cardNumber'>Card Number: </label>
+                <input id='cardNumber' type='text' name='cardNumber' placeholder='Card Number' />
+                <label htmlFor='cardExp'>Card Expiration: </label>
+                <input id='cardExp' type='text' name='cardExp' placeholder='Card Expiration' />
+                <label htmlFor='cardCVV'>Card CVV: </label>
+                <input id='cardCVV' type='text' name='cardCVV' placeholder='Card CVV' />
+
+                <input name='upgradeSubmit' type="submit" value="Upgrade Now" />
+            </form>
+        </div>
+    )
+};
 
 // show the users profile
 const App = (props) => {
@@ -100,7 +163,7 @@ const App = (props) => {
             <section id='profitModel'>
                 <h3>Upgrade?</h3>
                 <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
-                <button id='upgradeBtn'>Upgrade Now! </button>
+                <input id='upgradeBtn' type="button" onClick={(e) => { props.root.render(<UpgradeWindow />) }} value="Upgrade Now!" />
             </section>
 
             {/* change password */}
