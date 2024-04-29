@@ -83,13 +83,13 @@ const handleUpgrade = (e) => {
 
     // make sure the card number is valid
     if (cardNumber.length !== 16) {
-        helper.handleError('Invalid card number!');
+        helper.handleError('Invalid card number! Card number must be 16 digits long!');
         return false;
     };
 
     // make sure the cvv is valid
     if (cardCVV.length !== 3) {
-        helper.handleError('Invalid CVV!');
+        helper.handleError('Invalid CVV! CVV must be 3 digits long');
         return false;
     };
 
@@ -107,9 +107,9 @@ const UpgradeWindow = (props) => {
     return (
         <div>
             <h1>Upgrade to Premium</h1>
-            <h2>Here you can upgrade to the premium version of the application</h2>
             <h2>Please do <b>NOT</b> provide any actual financial information </h2>
 
+            <p>Here you can upgrade to the premium version of the application. For only a small cost of "Free 99" </p>
             <form id='upgradeForm'
                 name='upgradeForm'
                 onSubmit={handleUpgrade}
@@ -121,11 +121,11 @@ const UpgradeWindow = (props) => {
                 <label htmlFor='cardName'>Card Name: </label>
                 <input id='cardName' type='text' name='cardName' placeholder='Cardholder Name' />
                 <label htmlFor='cardNumber'>Card Number: </label>
-                <input id='cardNumber' type='text' name='cardNumber' placeholder='Card Number' />
+                <input id='cardNumber' type='text' name='cardNumber' placeholder='Card Number (Ex: 1234-4567-7890-1234)' />
                 <label htmlFor='cardExp'>Card Expiration: </label>
-                <input id='cardExp' type='text' name='cardExp' placeholder='Card Expiration' />
+                <input id='cardExp' type='text' name='cardExp' placeholder='Card Expiration (Ex: MM/YYYY)' />
                 <label htmlFor='cardCVV'>Card CVV: </label>
-                <input id='cardCVV' type='text' name='cardCVV' placeholder='Card CVV' />
+                <input id='cardCVV' type='text' name='cardCVV' placeholder='Card CVV (Ex: 123)' />
 
                 <input name='upgradeSubmit' type="submit" value="Upgrade Now" />
             </form>

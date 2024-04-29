@@ -131,13 +131,13 @@ const upgrade = async (req, res) => {
   }
 
   // check if the cvv is valid
-  if (cvv.length !== 3) {
-    return res.status(400).json({ error: 'Invalid CVV!' });
-  }
+  // if (cvv.length !== 3) {
+  //   return res.status(400).json({ error: 'Invalid CVV!' });
+  // }
 
-  // give the user premium status
-  // update the boolean in the Account model
+  // authenticate the user and update their account to premium status
   await Account.updateOne({ _id: req.session.account._id }, { isPremium: true });
+ 
 
   // return a success message
   return res.json({ message: 'Payment successful! You are now a premium user!', redirect: '/profile' });
