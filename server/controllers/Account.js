@@ -75,6 +75,7 @@ const signup = async (req, res) => {
 const getProfile = (req, res) => {
   // get the user's profile
   const account = Account.toAPI(req.session.account);
+  console.log("user account", account);
   return res.json({ account });
 };
 

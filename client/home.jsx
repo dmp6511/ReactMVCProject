@@ -53,6 +53,7 @@ const Home = (props) => {
 
                     {/* show the username and date of the blog */}
                     <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
+                    <h3 className="blogUsername">User: {blog.username} </h3>
 
 
                     <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>

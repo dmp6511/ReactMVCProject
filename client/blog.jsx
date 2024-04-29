@@ -4,7 +4,6 @@ const helper = require('./helper.js');
 const React = require('react');
 const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
-const { create } = require('underscore');
 
 // handle blog creation
 const handleBlog = (e, onBlogAdded) => {
@@ -103,6 +102,7 @@ const BlogList = (props) => {
 
                     {/* show the username and date of the blog */}
                     <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
+                    <h3 className="blogUsername">User: {blog.username} </h3>
 
 
                     <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>
@@ -122,7 +122,7 @@ const BlogList = (props) => {
 
     return (
         <div className='blogList'>
-            {blogNodes}
+            {blogNodes.reverse()}
         </div>
     );
 };

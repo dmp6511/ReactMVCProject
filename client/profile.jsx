@@ -187,8 +187,16 @@ const App = (props) => {
 
 
     // get the users first name
-    const [firstname, setFirstname] = useState(props.firstname);
-
+    const [firstname, setFirstname] = useState(false);
+    useEffect(() => {
+        const getFirstname = async () => {
+            const response = await fetch('/getProfile');
+            const body = await response.json();
+            console.log("body for getFirstname", body);
+            setFirstname(body.account.firstname);
+        };
+        getFirstname();
+    }, [props.firstname]);
 
     // get the users favorites
     const [favorites, setFavorites] = useState(['']);
@@ -203,7 +211,7 @@ const App = (props) => {
             <section id='profilePhoto'>
                 <p>Here you can set a profile photo to your liking! </p>
                 <img src='../../assets/img/default.png' alt='profile photo' id='profilePic' />
-                <input id='profilePicBtn' name='profilePicBtn' onClick={(e) => { props.render(<ProfilePhotoWindow />) }} type="button" value="Set Profile Photo" />
+                <input id='profilePicBtn' name='profilePicBtn' onClick={(e) => { props.root.render(<ProfilePhotoWindow />) }} type="button" value="Set Profile Photo" />
             </section>
 
 
@@ -232,12 +240,9 @@ const App = (props) => {
                     <input id="changePassBtn" type="button" onClick={(e) => { props.root.render(<ChangePassWindow />) }} value="Change Password" />
                 </div>
             </section>
-
-
-
             <br />
         </div>
-    )
+    );
 };
 
 // init
