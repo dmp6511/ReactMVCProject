@@ -77,6 +77,41 @@ const getProfile = (req, res) => {
   return res.json({ account });
 };
 
+// change password function
+const changePass = async (req, res) => {
+  const currentPass = `${req.body.currentPass}`;
+  const newPass = `${req.body.newPass}`;
+  const newPass2 = `${req.body.newPass2}`;
+
+  // check if all fields are filled out
+  if (!currentPass || !newPass || !newPass2) {
+    return res.status(400).json({ error: 'Some fields are empty!' });
+  }
+
+  // check if the new passwords match
+  if (newPass !== newPass2) {
+    return res.status(400).json({ error: 'New passwords do not match!' });
+  }
+
+  // authenticate the user
+  return Account.authenticate(req.session.account.username, currentPass, async (err, account) => {
+    if (err || !account) {
+      return res.status(401).json({ error: 'Wrong password!' });
+    }
+
+    // hash the new password
+    const hash = await Account.generateHash(newPass);
+
+    // update the user's password
+    await Account.updateOne({ _id: req.session.account._id }, { password: hash });
+
+    // return a success message
+    alert('Password changed successfully!');
+    return res.json({ redirect: '/profile' });
+  });
+
+}
+
 // exports
 module.exports = {
   loginPage,
@@ -85,4 +120,5 @@ module.exports = {
   signup,
   profilePage,
   getProfile,
+  changePass,
 };
