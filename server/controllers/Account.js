@@ -30,7 +30,8 @@ const login = (req, res) => {
     // set the user's session
     req.session.account = Account.toAPI(account);
 
-    return res.json({ redirect: '/profile' });
+
+    return res.json({ message: 'Login successful', redirect: '/profile' });
   });
 };
 
@@ -105,9 +106,7 @@ const changePass = async (req, res) => {
     // update the user's password
     await Account.updateOne({ _id: req.session.account._id }, { password: hash });
 
-    // return a success message
-    alert('Password changed successfully!');
-    return res.json({ redirect: '/profile' });
+    return res.json({ message: "Your password has been updated", redirect: '/profile' });
   });
 
 };
@@ -136,8 +135,7 @@ const upgrade = async (req, res) => {
   }
 
   // return a success message
-  alert('Payment successful! You are now a premium user!');
-  return res.json({ redirect: '/profile' });
+  return res.json({ message: 'Payment successful! You are now a premium user!', redirect: '/profile' });
 };
 
 // exports

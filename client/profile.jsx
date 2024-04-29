@@ -1,6 +1,7 @@
 // jsx for the profile page:
 
 const React = require('react');
+import { toast } from 'react-toastify';
 const helper = require('./helper.js');
 const { createRoot } = require('react-dom/client');
 const { useState, useEffect } = React;
@@ -28,7 +29,11 @@ const handleChangePass = (e) => {
     };
 
     // apply the changes to the user
-    helper.sendPost(e.target.action, { currentPass, newPass, newPass2 });
+    helper.sendPost(e.target.action, { currentPass, newPass, newPass2 }).then((result) => {
+        if (result.message) {
+            toast(result.message);
+        }
+    });
     return false;
 };
 
@@ -62,7 +67,7 @@ const ChangePassWindow = (props) => {
 // upgrade the user to premium
 const handleUpgrade = (e) => {
     e.preventDefault();
-    e.hideError();
+    helper.hideError();
 
     // get the card information from the user
     const cardName = e.target.querySelector('#cardName').value;
@@ -89,7 +94,11 @@ const handleUpgrade = (e) => {
     };
 
     // send the user to the upgrade page
-    helper.sendPost(e.target.action, { cardName, cardNumber, cardExp, cardCVV });
+    helper.sendPost(e.target.action, { cardName, cardNumber, cardExp, cardCVV }).then((result) => {
+        if (result.message) {
+            toast(result.message);
+        }
+    });
     return false;
 };
 
