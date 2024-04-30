@@ -146,6 +146,27 @@ const upgrade = async (req, res) => {
   return res.json({ message: 'Payment successful! You are now a premium user!', redirect: '/profile' });
 };
 
+// update the user's profile picture
+const updateProfilePic = async (req, res) => {
+  try {
+    // check if the user uploaded a file
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded!' });
+    }
+
+    // get the user's profile picture
+    const profilePic = req.file.path;
+
+    // update the user's profile picture
+    await Account.updateOne({ _id: req.session.account._id }, { profilePic });
+
+    return res.json({ message: 'Profile picture updated!', redirect: '/profile' });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: 'An error occurred.' });
+  }
+};
+
 // exports
 module.exports = {
   loginPage,
@@ -157,4 +178,5 @@ module.exports = {
   changePass,
   upgrade,
   favorite,
+  updateProfilePic,
 };

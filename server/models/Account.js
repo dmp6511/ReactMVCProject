@@ -51,7 +51,6 @@ const AccountSchema = new mongoose.Schema({
     default: '/assets/img/blank.png',
   },
 
-
   // premium
   isPremium: {
     type: Boolean,

@@ -218,7 +218,7 @@ const handleProfilePhoto = (e) => {
     helper.hideError();
 
     // get the users photo
-    const photo = e.target.querySelector('#profilePic').value;
+    const photo = e.target.querySelector('#profilePic').files[0];
 
     // make sure the photo isn't empty
     if (!photo) {
@@ -226,8 +226,15 @@ const handleProfilePhoto = (e) => {
         return false;
     };
 
-    // send the photo to the server
-    helper.sendPost(e.target.action, { photo }).then((result) => {
+    // get new form data
+    const formData = new FormData();
+    formData.append('photo', photo);
+
+    console.log("form data", formData);
+
+
+    // update the users photo
+    helper.sendPost(e.target.action, formData).then((result) => {
         if (result.message) {
             toast(result.message);
         }
@@ -250,7 +257,7 @@ const ProfilePhotoWindow = (props) => {
                 className='mainForm'
             >
                 <label htmlFor='profilePic'>Profile Photo: </label>
-                <input type="image" src="" alt="" />
+                <input id='profilePic' type='file' name='profilePic' />
                 <input name='profilePicBtn' type="submit" value="Set Profile Photo" />
             </form>
         </div>

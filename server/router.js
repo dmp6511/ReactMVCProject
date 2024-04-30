@@ -16,6 +16,7 @@ const router = (app) => {
   app.post('/changePass', mid.requiresLogin, controllers.Account.changePass);
 
   app.post('/getFavorites', mid.requiresLogin, controllers.Account.favorite);
+  app.post('/upload', mid.requiresLogin, controllers.Account.updateProfilePic);
 
   app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
 
