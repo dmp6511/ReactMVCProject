@@ -52,7 +52,7 @@ const BlogForm = (props) => {
                 className='blogForm'
             >
                 <label htmlFor="title">Title: </label>
-                <input id="title" type="text" name="title" placeholder="Blog Title" />
+                <input id="title" type="text" name="title" placeholder="Song Title" />
                 <label htmlFor="artist">Artist: </label>
                 <input id="artist" type="text" name="artist" placeholder="Artist" />
                 <label htmlFor="genre">Genre: </label>
@@ -60,8 +60,8 @@ const BlogForm = (props) => {
                 <label htmlFor="rating">Rating: </label>
                 <input type="number" name="rating" id="rating" max={5} placeholder='Rate out of 5' />
                 <label htmlFor="description">Description: </label>
-                <input id="description" type="text" name="description" placeholder="Description" />
-                <input className='makeBlogSubmit' type='submit' value='Make Blog' />
+                <input id="description" type="textarea" name="description" placeholder="Leave some thoughts!" />
+                <input className='makeBlogSubmit' type='submit' value='Submit Blog' />
 
             </form>
         </div>

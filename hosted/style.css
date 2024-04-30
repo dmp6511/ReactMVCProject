@@ -247,3 +247,136 @@ section {
     border: 2px solid #721172;
     padding: 5px;
 }
+
+/* ////////////////// */
+/* BLOG PAGE STLYES */
+/* ////////////////// */
+
+#blogForm {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 2px solid #721172;
+    border-radius: 10px;
+    background-color: #fbfbff;
+}
+
+#blogForm label {
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    font-size: 1.9em;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+#blogForm input[type=text], #blogForm input[type=number]{
+    width: 300px;
+    font-size: 1.7em;
+}
+
+#blogForm #description {
+    width: 300px;
+    font-size: 1.7em;
+}
+
+#blogForm textarea {
+    width: 300px;
+    height: 500px;
+    font-size: 1.7em;
+}
+
+#blogForm input[type=submit] {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+#blogForm input[type=submit]:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+#blogForm input[type=submit]:active {
+    background-color: #201335;
+    color: white;
+}
+
+#blogForm input[type=submit]:link, #blogForm input[type=submit]:visited {
+    color: white;
+}
+
+#blogForm input[type=submit]:focus {
+    outline: none;
+}
+
+
+/* Blog card */
+.blogCard {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 2px solid #721172;
+    border-radius: 10px;
+    background-color: #fbfbff;
+}
+
+.blogCard h3 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 25px;
+    text-decoration: underline;
+}
+
+.blogCard h4 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 25px;
+}
+
+.blogCard p {
+    font-size: 1.7em;
+}
+
+.blogCard button {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.blogCard button:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+.blogCard button:active {
+    background-color: #201335;
+    color: white;
+}
+
+.blogCard button:link, .blogCard button:visited {
+    color: white;
+}
+
+.blogCard button:focus {
+    outline: none;
+}
+
+
+
+
+
