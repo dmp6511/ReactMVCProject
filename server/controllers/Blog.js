@@ -51,7 +51,7 @@ const createBlog = async (req, res) => {
   }
 };
 
-//get blogs for the user only
+// get blogs for the user only
 const getBlogs = async (req, res) => {
   // try catch
   try {
@@ -75,7 +75,6 @@ const getAllBlogs = async (req, res) => {
     return res.status(500).json({ error: 'An error occurred' });
   }
 };
-
 
 // exports
 module.exports = {

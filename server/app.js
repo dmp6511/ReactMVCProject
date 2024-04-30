@@ -57,7 +57,7 @@ redisClient.connect().then(() => {
     store: new RedeisStore({
       client: redisClient,
     }),
-    secret: 'Domo Arigato',
+    secret: 'Project2SecretString',
     resave: false,
     saveUninitialized: false,
   }));

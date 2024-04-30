@@ -17,8 +17,6 @@ const router = (app) => {
 
   app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
 
-
-
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
   app.get('/profile', mid.requiresLogin, controllers.Account.profilePage);
