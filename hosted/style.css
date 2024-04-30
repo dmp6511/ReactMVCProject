@@ -62,73 +62,46 @@ nav:nth-child(1) {
     color: white;
 }
 
-
-
-/* Form Styles */
-
-.domoForm {
-    border: 2px solid #338acc;
-    height: 35px;
-    width: 700px;
-    margin-top:0px;
-    padding-top:10px;
-    background-color: #55acee;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-}
-
-.domoForm label {
-    display: inline-block;
-    width: 75px;
-    margin-left: 10px;
-    font-size: 1.2em;
-    float: left;
-    color: white;
-}
-
-.domoForm input[type=text] {
-    float:left;
-}
-
-.makeDomoSubmit {
-    transition: background-color 0.4s ease;
-    display: inline;
-    width: 90px;
-    background-color: #55acee;
-    border-radius: 2px;
-    color: white;
-    text-decoration: none;
-}
-
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
-    color: white;
-}
-
-.makeDomoSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #338acc;
-}
-
 /* LOGIN STYLES */
 
-.mainForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 50px;
-    font-size: 1.2em;
-    padding: 50px;
+#loginForm {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fbfbff;
+    border: 15px solid #721121;
+    display: block;
 }
 
-
-.mainForm label {
-    display: inline-block;
-    width: 100px;
+#loginForm label {
+    display: block;
+    width: 250px;
     text-align: right;
-    font-size: 1.7em;
+    font-size: 2.8em;
+    margin: 0 auto;
+
 }
 
+#loginForm input[type=text], #loginForm input[type=password]{
+    display: block;
+    width: 350px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    margin-bottom: 10px;
 
+}
+
+#loginForm input[type=submit] {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 50px;
+}
 
 /* sign in button */
 .formSubmit {
@@ -158,29 +131,68 @@ nav:nth-child(1) {
 
 /* SIGN UP PAGE STYLES */
 
-#firstname, #user, #pass, #pass2 {
-    text-align: center;
-    padding: 15px;
-    font-size: 34px;
-    width: 380px;
-    border-radius: 6px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+#signupForm {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 15px solid #721121;
+    border-radius: 10px;
+    background-color: #fbfbff;
+    display: block;
 }
 
-#firstname:focus, #user:focus, #pass:focus, #pass2:focus {
+#signupForm label {
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+    font-size: 2.0em;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+#signupForm input[type=text], #signupForm input[type=password]{
+    width: 300px;
+    font-size: 1.3em;
+}
+
+#signupForm input[type=submit] {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#signupForm input[type=submit]:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+#signupForm input[type=submit]:active {
+    background-color: #201335;
+    color: white;
+}
+
+#signupForm input[type=submit]:link, #signupForm input[type=submit]:visited {
+    color: white;
+}
+
+#signupForm input[type=submit]:focus {
     outline: none;
 }
 
-#signupForm {
-    display: block;
-}
 
 .hidden {
     display: none;
 }
 
+/* ////////////////// */
 /* Profile page styles */
+/* ////////////////// */
 
 h3 {
     text-align: center;
@@ -190,8 +202,8 @@ h3 {
 }
 
 #profilePic {
-    width: 185px;
-    height: 175px;
+    width: 195px;
+    height: 185px;
     border-radius: 75px;
     float: right;
     border: 2px solid #721172;
@@ -204,7 +216,7 @@ h3 {
     width: 200px;
     text-align: center;
     height: 200px;
-    border-radius: 100px;
+    border: 0px;
     margin: 0 auto;
     margin-top: 50px;
     float: right;
@@ -213,7 +225,7 @@ h3 {
 
 #setProfilePhoto {
     margin-top: 50px;
-    font-size: large;
+    font-size: larger;
 }
 
 button {
@@ -253,6 +265,31 @@ section {
     padding: 5px;
 }
 
+/* //////////////////// */
+/* HOME PAGE STYLES */
+/* //////////////////// */
+
+#blogList {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 20px solid #721121;
+    border-radius: 10px;
+    background-color: #757575;
+}
+
+#blogs {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 20px solid #721121;
+    border-radius: 10px;
+    background-color: #f5E960;
+
+}
+
 /* ////////////////// */
 /* BLOG PAGE STLYES */
 /* ////////////////// */
@@ -262,7 +299,7 @@ section {
     margin-left: 50px;
     margin-right: 50px;
     padding: 20px;
-    border: 2px solid #721172;
+    border: 20px solid #721121;
     border-radius: 10px;
     background-color: #fbfbff;
 }
@@ -412,6 +449,131 @@ section {
 .blogCard button:focus {
     outline: none;
 }
+
+/* ////////////////// */
+/* UPGRADE PAGE STYLES */
+/* ////////////////// */
+
+#upgradeForm {
+    width: 70%;
+   margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #721172;
+    border-radius: 10px;
+    background-color: #fbfbff;
+    display: block;
+}
+
+#upgradeForm label {
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+    font-size: 2.0em;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+#upgradeForm input[type=text], #upgradeForm input[type=number]{
+    width: 300px;
+    font-size: 1.3em;
+}
+
+#upgradeForm input[type=submit] {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+
+#upgradeForm input[type=submit]:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+#upgradeForm input[type=submit]:active {
+    background-color: #201335;
+    color: white;
+}
+
+#upgradeForm input[type=submit]:link, #upgradeForm input[type=submit]:visited {
+    color: white;
+}
+
+#upgradeForm input[type=submit]:focus {
+    outline: none;
+}
+
+/* ////////////////// */
+
+/* ////////////////// */
+/* CHANGE PASS STYLES */
+/* ////////////////// */
+
+#changePassForm {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #721172;
+    border-radius: 10px;
+    background-color: #fbfbff;
+    display: block;
+}
+
+#changePassForm label {
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+    font-size: 2.0em;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+#changePassForm input[type=password]{
+    width: 300px;
+    font-size: 1.3em;
+}
+
+#changePassForm input[type=submit] {
+    text-align: center;
+    transition: background-color 0.4s ease;
+    width: 200px;
+    font-size: larger;
+    display: block;
+    background-color: #f5e960;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#changePassForm input[type=submit]:hover {
+    transition: background-color 0.4s ease;
+    background-color: #201335;
+    color: white;
+}
+
+#changePassForm input[type=submit]:active {
+    background-color: #201335;
+    color: white;
+}
+
+#changePassForm input[type=submit]:link, #changePassForm input[type=submit]:visited {
+    color: white;
+}
+
+#changePassForm input[type=submit]:focus {
+    outline: none;
+}
+
+/* ////////////////// */
+
+
+
+
 
 
 
