@@ -15,6 +15,8 @@ const router = (app) => {
 
   app.post('/changePass', mid.requiresLogin, controllers.Account.changePass);
 
+  app.post('/getFavorites', mid.requiresLogin, controllers.Account.favorite);
+
   app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
 
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);

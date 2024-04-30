@@ -189,8 +189,18 @@ h3 {
     text-decoration: underline;
 }
 
+#profilePic {
+    width: 185px;
+    height: 175px;
+    border-radius: 75px;
+    float: right;
+    border: 2px solid #721172;
+    padding: 3px;
+    margin-bottom: 5px;
+}
 
-#profilePhoto {
+
+#profilePhotoSect {
     width: 200px;
     text-align: center;
     height: 200px;
@@ -204,11 +214,6 @@ h3 {
 #setProfilePhoto {
     margin-top: 50px;
     font-size: large;
-}
-
-#profilePic {
-    border: 2px solid #721172;
-    padding: 3px;
 }
 
 button {
@@ -329,22 +334,54 @@ section {
     background-color: #fbfbff;
 }
 
-.blogCard h3 {
+.blogOwner {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: right;
+}
+
+.blogUsername {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: left;
+}
+
+.blogTakes {
+    font-size: 1.5em;
     text-align: center;
-    font-size: 40px;
-    margin-top: 25px;
+    text-decoration: none;
+}
+
+.blogTitle {
+    font-size: 2.5em;
     text-decoration: underline;
 }
 
-.blogCard h4 {
+.blogRating {
+    font-size: 1.5em;
     text-align: center;
-    font-size: 30px;
-    margin-top: 25px;
+    text-decoration: none;
 }
 
-.blogCard p {
-    font-size: 1.7em;
+.blogGenre {
+    font-size: 1.5em;
+    text-align: center;
 }
+
+.blogDescription {
+    border: 2px solid #721172;
+    padding: 25px;
+    font-size: 2em;
+}
+
+.blogDate {
+    font-size: 1.2em;
+    text-align: right;
+}
+
+
 
 .blogCard button {
     text-align: center;
@@ -359,7 +396,7 @@ section {
 
 .blogCard button:hover {
     transition: background-color 0.4s ease;
-    background-color: #201335;
+    background-color: #721121;
     color: white;
 }
 

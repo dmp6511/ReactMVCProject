@@ -64,6 +64,83 @@ const ChangePassWindow = (props) => {
     )
 };
 
+
+// handle favorites for the user
+const handleFavorite = (e) => {
+    e.preventDefault();
+    helper.hideError();
+
+    // get the blog object
+    const blog = e.target.querySelector('#blogCard');
+
+    // post request
+    helper.sendPost(e.target.action, blog);
+    return false;
+};
+
+// favorites list
+const FavoritesList = (props) => {
+    const [favorites, setFavorites] = useState(props.favorites);
+
+    // call in the favorites
+    useEffect(() => {
+        const loadFavoritesfromServer = async () => {
+            const response = await fetch('/getFavorites');
+            const body = await response.json();
+            console.log(body);
+            setFavorites(body.favorites);
+        };
+
+        loadFavoritesfromServer();
+    }, [props.refreshFavorites]);
+
+    // if the list is empty
+    if (favorites.length === 0) {
+        return (
+            <div>
+                <h3 className='emptyBlog'>No Favorites yet</h3>
+            </div>
+        )
+    }
+
+    // map the favorites to a list
+    const favoriteList = favorites.map((favorite) => {
+        return (
+            <div key={favorite._id} className='blog'>
+                <h3>{favorite.title}</h3>
+                <h4>{favorite.artist}</h4>
+                <h4>{favorite.genre}</h4>
+                <h4>{favorite.rating}</h4>
+                <p>{favorite.description}</p>
+            </div>
+        );
+    });
+
+    return (
+        <div id='favsList'>
+            {favoriteList}
+        </div>
+    );
+};
+
+// favorite window
+const FavoriteWindow = (props) => {
+
+    // refresh the favorites
+    const [refreshFavorites, setRefreshFavorites] = useState(false);
+
+    return (
+        <div>
+            <h1>Favorite Songs</h1>
+            <h2>Here you can view the songs that you have favorited. </h2>
+
+            <div id='favsList'>
+                <FavoritesList favorites={[]} refreshFavorites={refreshFavorites} />
+            </div>
+        </div>
+    )
+};
+
 // upgrade the user to premium
 const handleUpgrade = (e) => {
     e.preventDefault();
@@ -173,7 +250,7 @@ const ProfilePhotoWindow = (props) => {
                 className='mainForm'
             >
                 <label htmlFor='profilePic'>Profile Photo: </label>
-                <input id='profilePic' type='file' name='profilePic' />
+                <input type="image" src="" alt="" />
                 <input name='profilePicBtn' type="submit" value="Set Profile Photo" />
             </form>
         </div>
@@ -198,9 +275,6 @@ const App = (props) => {
         getFirstname();
     }, [props.firstname]);
 
-    // get the users favorites
-    const [favorites, setFavorites] = useState(['']);
-
     return (
         <div>
             <h1>Welcome {firstname}!</h1>
@@ -208,9 +282,8 @@ const App = (props) => {
 
 
             {/* profile photo */}
-            <section id='profilePhoto'>
-                <p>Here you can set a profile photo to your liking! </p>
-                <img src='../../assets/img/default.png' alt='profile photo' id='profilePic' />
+            <section id='profilePhotoSect'>
+                <img src='../../assets/img/blank.png' alt='profile photo' id='profilePic' />
                 <input id='profilePicBtn' name='profilePicBtn' onClick={(e) => { props.root.render(<ProfilePhotoWindow />) }} type="button" value="Set Profile Photo" />
             </section>
 
@@ -218,30 +291,28 @@ const App = (props) => {
             {/* favorites */}
             <section id='favorites'>
                 <h3>Favorite Songs</h3>
-                <div id='songList'>
-                    <p>Here you will be able to view the songs that you have favorited. </p>
-                    <ul>Songs:
-
-                    </ul>
+                <div>
+                    <p>Here you can view the songs that you have favorited. </p>
+                    <input id='favoritesBtn' type="button" onClick={(e) => { props.root.render(<FavoriteWindow />) }} value="View Favorites" />
                 </div>
-            </section>
+            </section >
 
             {/* profit model */}
-            <section id='profitModel'>
+            < section id='profitModel' >
                 <h3>Upgrade?</h3>
                 <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
                 <input id='upgradeBtn' type="button" onClick={(e) => { props.root.render(<UpgradeWindow />) }} value="Upgrade Now!" />
-            </section>
+            </section >
 
             {/* change password */}
-            <section id='changePassword'>
+            < section id='changePassword' >
                 <div>
                     <h3> <b>Change Password? </b> </h3>
                     <input id="changePassBtn" type="button" onClick={(e) => { props.root.render(<ChangePassWindow />) }} value="Change Password" />
                 </div>
-            </section>
+            </section >
             <br />
-        </div>
+        </div >
     );
 };
 

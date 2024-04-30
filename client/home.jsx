@@ -6,12 +6,25 @@ const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 const helper = require('./helper.js');
 
+// add blogs to favorites
+const addFavorite = (e) => {
+    e.preventDefault();
+    helper.hideError();
+
+    // get the blog object
+    const getBlog = e.target.querySelector('#blogCard').value;
+
+    // post request
+    helper.sendPost(e.target.action, getBlog);
+    return false;
+};
+
 
 
 // show the home page
 const Home = (props) => {
 
-    // get the latest blogs and 
+    // get the latest blogs
     const [blogs, setBlogs] = useState(props.blogs);
 
     useEffect(() => {
@@ -42,6 +55,8 @@ const Home = (props) => {
     // map the blogs to a list
     const blogList = blogs.map((blog) => {
 
+        console.log("blog", blog);
+
         return (
             // blog card
             <div key={blog._id} className='blog'>
@@ -49,10 +64,9 @@ const Home = (props) => {
 
                     {/* favorite button */}
                     {/* sends the object to the favorites section on the profile page */}
-                    <button className='favoriteButton' onClick={() => null}> &#10084; </button>
+                    <button className='favoriteButton' onClick={() => addFavorite(blog)}> &#10084; </button>
 
                     {/* show the username and date of the blog */}
-                    <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
                     <h3 className="blogUsername">User: {blog.username} </h3>
 
 
@@ -66,6 +80,7 @@ const Home = (props) => {
 
                     {/* created at */}
                     <h5 className='blogDate'> Created at: {new Date(blog.createdAt).toLocaleString()} </h5>
+                    <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
                 </section>
 
                 <br />

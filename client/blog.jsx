@@ -101,7 +101,6 @@ const BlogList = (props) => {
                 <section id='blogCard'>
 
                     {/* show the username and date of the blog */}
-                    <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
                     <h3 className="blogUsername">User: {blog.username} </h3>
 
 
@@ -115,6 +114,7 @@ const BlogList = (props) => {
 
                     {/* created at */}
                     <h5 className='blogDate'> Created at: {new Date(blog.createdAt).toLocaleString()} </h5>
+                    <h5 className="blogOwner">Owner ID: {blog.owner}</h5>
                 </section>
             </div>
         );

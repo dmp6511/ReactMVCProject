@@ -110,6 +110,17 @@ const changePass = async (req, res) => {
   });
 };
 
+// favorite function
+const favorite = async (req, res) => {
+  // get the blog object
+  const blog = req.body;
+
+  // update the user's favorites
+  await Account.updateOne({ _id: req.session.account._id }, { $push: { favorites: blog } });
+
+  return res.json({ message: 'Blog added to favorites!' });
+};
+
 // upgrade function
 const upgrade = async (req, res) => {
   // get the card information from the user
@@ -145,4 +156,5 @@ module.exports = {
   getProfile,
   changePass,
   upgrade,
+  favorite,
 };

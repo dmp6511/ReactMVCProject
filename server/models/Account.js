@@ -45,10 +45,23 @@ const AccountSchema = new mongoose.Schema({
     default: Date.now,
   },
 
+  // profile picture
+  profilePic: {
+    type: String,
+    default: '/assets/img/blank.png',
+  },
+
+
   // premium
   isPremium: {
     type: Boolean,
     default: false,
+  },
+
+  // favorites
+  favorites: {
+    type: Array,
+    default: [],
   },
 });
 
@@ -58,6 +71,8 @@ AccountSchema.statics.toAPI = (doc) => ({
   username: doc.username,
   _id: doc._id,
   isPremium: doc.isPremium,
+  favorites: doc.favorites,
+  profilePic: doc.profilePic,
 });
 
 // Helper function to hash a password
