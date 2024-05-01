@@ -307,7 +307,7 @@ const App = (props) => {
             {/* profit model */}
             < section id='profitModel' >
                 <h3>Upgrade?</h3>
-                <p>Here you can opt in for the premium version of the application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat reprehenderit veritatis eligendi possimus nesciunt eius praesentium unde voluptate iusto laborum minus architecto dolorem, sint optio et libero, eaque nulla. Esse.</p>
+                <p>Here you can opt in for the premium version of the application. This will provide you will exclusive features in the app and a profile badge. </p>
                 <input id='upgradeBtn' type="button" onClick={(e) => { props.root.render(<UpgradeWindow />) }} value="Upgrade Now!" />
             </section >
 
