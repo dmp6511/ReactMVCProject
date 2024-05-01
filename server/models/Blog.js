@@ -44,6 +44,8 @@ const blogSchema = new mongoose.Schema({
     required: true,
     ref: 'Account',
   },
+
+  
 });
 
 // converts a doc to something we can store in redis later on

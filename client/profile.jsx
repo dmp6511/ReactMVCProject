@@ -285,7 +285,7 @@ const App = (props) => {
     return (
         <div>
             <h1>Hello {firstname}!</h1>
-            <h2>Welcome to your profile page!</h2>
+            <h2>Welcome to your Profile Page!</h2>
 
 
             {/* profile photo */}

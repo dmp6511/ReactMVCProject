@@ -101,12 +101,12 @@ const BlogList = (props) => {
                 <section id='blogCard'>
 
                     {/* show the username and date of the blog */}
-                    <h3 className="blogUsername">User: {blog.username} </h3>
+                    {/* <h3 className="blogUsername">User: {blog.username} </h3> */}
 
 
                     <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>
-                    <h4 className='blogGenre'> Genre: {blog.genre} </h4>
                     <h4 className='blogRating'> {blog.rating} &#9733; of 5 &#9733; </h4>
+                    <h4 className='blogGenre'> Genre: {blog.genre} </h4>
 
                     {/* if there is a description */}
                     <h4 className="blogTakes"> Takeaways: </h4>

@@ -64,15 +64,15 @@ const Home = (props) => {
 
                     {/* favorite button */}
                     {/* sends the object to the favorites section on the profile page */}
-                    <button className='favoriteButton' onClick={() => addFavorite(blog)}> &#10084; </button>
+                    <button className='favoriteButton' onClick={(e) => addFavorite(blog)}> &#10084; </button>
 
                     {/* show the username and date of the blog */}
-                    <h3 className="blogUsername">User: {blog.username} </h3>
+                    {/* <h3 className="blogUsername">User: {blog.username} </h3> */}
 
 
                     <h3 className='blogTitle'> '{blog.title}' by {blog.artist} </h3>
-                    <h4 className='blogGenre'> Genre: {blog.genre} </h4>
                     <h3 className='blogRating'> {blog.rating} &#9733; of 5 &#9733; </h3>
+                    <h4 className='blogGenre'> Genre: {blog.genre} </h4>
 
                     {/* if there is a description */}
                     <h3 className="blogTakes"> Takeaways: </h3>
@@ -109,6 +109,7 @@ const Home = (props) => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render(<Home blogs={[]} />);
+    console.log(blogs);
 };
 
 window.onload = init;
