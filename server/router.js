@@ -27,7 +27,7 @@ const router = (app) => {
   app.get('/blog', mid.requiresLogin, controllers.Blog.blogPage);
   app.post('/blog', mid.requiresLogin, controllers.Blog.createBlog);
 
-  // app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   // 404
   app.get('/*', mid.requiresSecure, mid.requiresLogout, controllers.Account.notFound);
