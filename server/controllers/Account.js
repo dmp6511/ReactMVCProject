@@ -167,6 +167,11 @@ const updateProfilePic = async (req, res) => {
   }
 };
 
+// notFound
+const notFound = (req, res) => {
+  res.status(404).send('404 | Page Not Found or this page does not exist!');
+};
+
 // exports
 module.exports = {
   loginPage,
@@ -179,4 +184,5 @@ module.exports = {
   upgrade,
   favorite,
   updateProfilePic,
+  notFound,
 };

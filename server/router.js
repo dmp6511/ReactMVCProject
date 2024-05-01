@@ -28,6 +28,9 @@ const router = (app) => {
   app.post('/blog', mid.requiresLogin, controllers.Blog.createBlog);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+
+  // 404
+  app.get('/*', mid.requiresSecure, mid.requiresLogout, controllers.Account.notFound);
 };
 
 module.exports = router;
